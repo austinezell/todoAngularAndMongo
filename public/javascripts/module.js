@@ -14,14 +14,14 @@ app.controller('main', function($scope, $http){
   $scope.task = ''
 
   $scope.populate = function(){
-    $http.get('http://localhost:3000/todo')
+    $http.get('/todo')
     .then(function(data){
       $scope.todos = data.data
     })
   }
 
   $scope.addTask = function(description){
-    $http.post('http://localhost:3000/addtodo', {description: description})
+    $http.post('/addtodo', {description: description})
     .then(function(data){
       $scope.populate()
       $scope.task= ''
@@ -29,14 +29,14 @@ app.controller('main', function($scope, $http){
   }
 
   $scope.remove = function(id) {
-    $http.delete('http://localhost:3000/remove/'+id)
+    $http.delete('/remove/'+id)
     .then(function(data){
       $scope.populate()
     })
   }
 
   $scope.toggleComplete = function(id, newState){
-    $http.put('http://localhost:3000/update/'+id, {completed: newState})
+    $http.put('/update/'+id, {completed: newState})
     .then(function(data){
       $scope.populate()
     })
