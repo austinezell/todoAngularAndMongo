@@ -23,7 +23,6 @@ app.controller('main', function($scope, $http){
   $scope.addTask = function(description){
     $http.post('http://localhost:3000/addtodo', {description: description})
     .then(function(data){
-      console.log($scope.task);
       $scope.populate()
       $scope.task= ''
     })
