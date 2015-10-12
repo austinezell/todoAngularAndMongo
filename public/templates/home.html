@@ -1,0 +1,36 @@
+<div class="row container">
+
+
+
+  <div class="col-xs-9">
+
+    <table>
+      <thead>
+        <tr>
+          <th>Completed?</th>
+          <th>Description:</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="todo in todos">
+          <td>
+            <input type="checkbox" ng-checked="todo.completed" ng-click="toggleComplete(todo._id, !todo.completed)"/>
+          </td>
+          <td ng-class="todo.completed ? 'done' : 'bold' ">
+            {{todo.description}}
+          </td>
+          <td><a href=""><span ng-click="remove(todo._id)" class="glyphicon glyphicon-remove-circle"></span></a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col-xs-3">
+
+    <form ng-submit="addTask(task)">
+      <input type="text" placeholder="Describe your task" ng-model="task"/>
+      <button type="submit" class='btn btn-xs btn-info'>Add Task</button>
+    </form>
+  </div>
+</div>

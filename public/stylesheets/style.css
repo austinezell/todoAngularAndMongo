@@ -1,0 +1,28 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+
+.done {
+  text-decoration: line-through;
+}
+
+.bold {
+  text-decoration: bold;
+}
+
+
+th, td {
+  padding: 10px;
+  border: 1px solid black;
+}
+
+td{
+  background-color: lightgrey;
+  text-align: center;
+}
+
+th {
+  background-color: grey;
+}
