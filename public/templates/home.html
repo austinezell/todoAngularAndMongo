@@ -20,6 +20,21 @@
             notest
           </div>
           <div class="tabs-panel" id="all">
+            <ul ng-repeat="todo in todos track by $index" class="vertical menu top-layer" foundation-repeat data-accordion-menu>
+              <li>
+                <a href="#">{{todo.title}}</a>
+                <ul class="veritcal menu nested">
+                  <li><a href="#">Dates</a>
+                    <ul class="veritcal menu nested">
+                      <li><a href="#">Date Posted: {{todo.datePosted.toDateString()}}</a></li>
+                      <li><a href="#">Deadline: {{todo.deadline.toDateString() || "No Deadline"}}</a></li>
+                      <li><a ng-if="todo.isCompleted" href="#">Completed On: {{todo.dateCompleted.toDateString()}}</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#">Item 1B</a></li>
+                </ul>
+              </li>
+            </ul>
           </div>
         </div>
 

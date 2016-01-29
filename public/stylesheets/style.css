@@ -21,6 +21,15 @@ button.button:hover{
   border-top-color: black;
 }
 
+ul.vertical.menu li {
+  display: block !important;
+  text-align: left;
+}
+
+ul.vertical.menu.top-layer {
+  margin-bottom: 40px;
+}
+
 .label {
   width: 100%;
   font-size: 24px;
