@@ -1,40 +1,42 @@
 <div class="row">
   <h1 align='center'>To Do App</h1>
   <hr>
-  <div class="columns small-offset-1 small-7">
-    <table>
-      <thead>
-        <tr>
-          <th>Completed?</th>
-          <th>Description:</th>
-          <th>Delete</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="todo in todos">
-          <td>
-            <input type="checkbox" ng-checked="todo.completed" ng-click="toggleComplete(todo._id, !todo.completed)"/>
-          </td>
-          <td ng-class="todo.completed ? 'done' : 'bold' ">
-            {{todo.description}}
-          </td>
-          <td><a href=""><span ng-click="remove(todo._id)" class="glyphicon glyphicon-remove-circle"></span></a></td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="columns small-offset-1 small-5">
+    <div class="row">
+      <div class="columns small-4">
+        <ul class="tabs vertical" id="todos" data-tabs>
+          <li class="tabs-title"><a href="#notCompleted">To Do</a></li>
+          <li class="tabs-title"><a href="#completed">To Done</a></li>
+        </ul>
+      </div>
+      <div class="columns small-8">
+
+        <div class="tabs-content vertical" data-tabs-content="todos">
+          <div class="tabs-panel" id="notCompleted">
+            <p>test1</p>
+          </div>
+          <div class="tabs-panel" id="completed">
+            notest
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+
   </div>
 
-  <div align='center' id="add-form" class="columns small-3">
+  <div align='center' id="add-form" class="columns small-3 small-offset-2 end">
 
     <form ng-submit="addTask(task)">
       <span class="label">Title</span><br>
       <input type="text" placeholder="Title" ng-model="task.title" required/>
       <span class="label">Description</span><br>
-      <textarea placeholder="Description" ng-model="task.description" name="name" rows="5"></textarea>
+      <textarea placeholder="Description" ng-model="task.description" name="name" rows="3"></textarea>
       <span class="label">Deadline</span><br>
       <input class="date" ng-model="task.deadline" type="date" min="{{today}}">
       <button type="submit" class='button small'>Add Task</button>
     </form>
   </div>
-  <div class="small-1 columns"></div>
 </div>

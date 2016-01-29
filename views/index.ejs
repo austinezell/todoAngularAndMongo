@@ -2,18 +2,61 @@
 <html>
 <head>
   <title>Expressgular</title>
-  <link rel="stylesheet" href="/bower_components/foundation/css/foundation.min.css"/>
+  <link rel="stylesheet" href="/bower_components/foundation-sites/dist/foundation.min.css"/>
   <link rel='stylesheet' href='/stylesheets/style.css' />
 
 </head>
-<body ng-app='sample' ng-controller='main'>
+<body ng-app='sample'>
   <ui-view>
   </ui-view>
 
+  <!-- <div class="row">
+    <h1 align='center'>To Do App</h1>
+    <hr>
+    <div class="columns small-offset-1 small-5">
+      <div class="row">
+        <div class="columns small-4">
+          <ul class="tabs vertical" id="todos" data-tabs>
+            <li class="tabs-title is-active"><a href="#notCompleted">To Do</a></li>
+            <li class="tabs-title"><a href="#completed">To Done</a></li>
+          </ul>
+        </div>
+        <div class="columns small-8">
+
+          <div class="tabs-content vertical" data-tabs-content="todos">
+            <div class="tabs-panel is-active" id="notCompleted">
+              <p>test1</p>
+            </div>
+            <div class="tabs-panel" id="completed">
+              notest
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+
+    </div> -->
+
+    <div align='center' id="add-form" class="columns small-3 small-offset-2 end">
+
+      <form ng-submit="addTask(task)">
+        <span class="label">Title</span><br>
+        <input type="text" placeholder="Title" ng-model="task.title" required/>
+        <span class="label">Description</span><br>
+        <textarea placeholder="Description" ng-model="task.description" name="name" rows="3"></textarea>
+        <span class="label">Deadline</span><br>
+        <input class="date" ng-model="task.deadline" type="date" min="{{today}}">
+        <button type="submit" class='button small'>Add Task</button>
+      </form>
+    </div>
+  </div>
+
   <script src="/bower_components/angular/angular.js" charset="utf-8"></script>
   <script src="/bower_components/jquery/dist/jquery.min.js" charset="utf-8"></script>
-  <script src="/bower_components/foundation/js/foundation.min.js" charset="utf-8"></script>
   <script src="/bower_components/angular-ui-router/release/angular-ui-router.js" charset="utf-8"></script>
+  <script src="/bower_components/foundation-sites/dist/foundation.js" charset="utf-8"></script>
   <script src="/javascripts/module.js" charset="utf-8"></script>
 </body>
 </html>

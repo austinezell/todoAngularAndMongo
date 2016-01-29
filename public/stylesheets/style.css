@@ -3,10 +3,15 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+.tabs>.tabs-title{
+  border: 1px solid rgb(221, 221, 221);
+}
+
 button.button {
   border: 3px solid transparent;
   border-right-color: black;
   border-bottom-color: black;
+  transition: all 0s;
 }
 
 button.button:hover{

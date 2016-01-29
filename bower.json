@@ -19,6 +19,7 @@
   "dependencies": {
     "angular": "~1.4.7",
     "angular-ui-router": "~0.2.15",
-    "foundation": "~5.5.3"
+    "foundation-sites": "~6.1.0",
+    "motion-ui": "~1.1.0"
   }
 }

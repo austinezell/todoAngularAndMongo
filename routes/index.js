@@ -32,7 +32,9 @@ router.delete('/remove/:id', function(req, res){
 })
 
 router.put('/update/:id', function(req, res){
-  ToDo.update({_id: req.params.id}, req.body, function(err, todo){
+  console.log(req.body);
+  ToDo.findByIdAndUpdate(req.params.id, req.body, function(err, todo){
+    console.log(todo);
     if (err || !todo){
       res.status(400).send(err);
     }else {
