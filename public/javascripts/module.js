@@ -14,7 +14,7 @@ app.config(function($urlRouterProvider, $stateProvider) {
 
 app.controller('mainCtrl', function($scope, $http) {
   angular.element(document).ready(function() {
-    $(document).foundation()
+    $(document).foundation();
   })
   $scope.task = {}
 
@@ -24,16 +24,26 @@ app.controller('mainCtrl', function($scope, $http) {
   let day = d.getDate();
   $scope.today = `${y}-${m}-${day}`;
 
+  function filter(todos) {
+    $scope.doneTodos= todos.filter((todo)=>{
+      return todo.isCompleted;
+    });
+    $scope.notDoneTodos = todos.filter((todo)=>{
+      return !todo.isCompleted;
+    });
+  }
+
   function populate() {
     $http.get('/todo')
-      .then(function(data) {
-        $scope.todos = data.data
+      .then(function(response) {
+        $scope.todos = response.data;
+        filter(response.data);
       })
   }
 
   $scope.addTask = function(task) {
     $http.post('/addtodo/', task)
-      .then(function(data) {
+      .then(function(response) {
         populate();
         $scope.task = {};
       })
@@ -43,7 +53,7 @@ app.controller('mainCtrl', function($scope, $http) {
 
   $scope.remove = function(id) {
     $http.delete('/remove/' + id)
-      .then(function(data) {
+      .then(function(response) {
         populate();
       })
   }
