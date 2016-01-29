@@ -2,8 +2,12 @@ var mongoose = require('mongoose');
 
 
 var ToDoSchema = mongoose.Schema({
-  description: {type: String, required: true},
-  completed: {type: Boolean, default: false}
+  title: {type: String, required: true},
+  description: {type: String},
+  isCompleted: {type: Boolean, default: false},
+  datePosted: {type: Date, default: new Date},
+  deadline: {type: Date},
+  dateCompleted: {type: Date}
 });
 
 

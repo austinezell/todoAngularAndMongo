@@ -1,9 +1,5 @@
-<div class="row container">
-
-
-
-  <div class="col-xs-9">
-
+<div class="row ">
+  <div class="columns small-9">
     <table>
       <thead>
         <tr>
@@ -26,10 +22,15 @@
     </table>
   </div>
 
-  <div class="col-xs-3">
+  <div id="add-form" class="columns small-3">
 
     <form ng-submit="addTask(task)">
-      <input type="text" placeholder="Describe your task" ng-model="task"/>
+      Title<br>
+      <input type="text" placeholder="Title" ng-model="task.title" required/>
+      Description<br>
+      <textarea ng-model="task.description" name="name" rows="5"></textarea>
+      Deadline<br>
+      <input ng-model="task.deadline" type="date" ng-min="{{todayDate}}">
       <button type="submit" class='btn btn-xs btn-info'>Add Task</button>
     </form>
   </div>

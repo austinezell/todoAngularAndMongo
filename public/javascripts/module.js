@@ -11,7 +11,9 @@ app.config(function($urlRouterProvider, $stateProvider){
 
 app.controller('main', function($scope, $http){
 
-  $scope.task = ''
+  $scope.task = '';
+
+  $scope.todayDate = new Date();
 
   $scope.populate = function(){
     $http.get('/todo')
@@ -21,12 +23,14 @@ app.controller('main', function($scope, $http){
   }
 
   $scope.addTask = function(description){
-    $http.post('/addtodo', {description: description})
+    $http.post('/addtodo/', {description: description})
     .then(function(data){
       $scope.populate()
       $scope.task= ''
     })
   }
+
+
 
   $scope.remove = function(id) {
     $http.delete('/remove/'+id)
