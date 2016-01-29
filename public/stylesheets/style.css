@@ -1,8 +1,45 @@
 body {
-  padding: 50px;
+  background-color: ghostwhite;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+button.button {
+  border: 3px solid transparent;
+  border-right-color: black;
+  border-bottom-color: black;
+}
+
+button.button:hover{
+  background-color: auto;
+  border: 3px solid transparent;
+  border-left-color: black;
+  border-top-color: black;
+}
+
+.label {
+  width: 100%;
+  font-size: 24px;
+  color: black;
+  background-color: whitesmoke;
+}
+
+input, textarea {
+  text-align: center;
+}
+
+.row {
+  background-color: white;
+  height: 100%;
+  text-align: center;
+}
+
+.columns{
+}
+
+#add-form {
+  border: 1px solid grey;
+  background-color: ghostwhite;
+}
 
 .done {
   text-decoration: line-through;
@@ -25,4 +62,20 @@ td{
 
 th {
   background-color: grey;
+}
+
+::-webkit-input-placeholder {
+   text-align: center;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   text-align: center;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   text-align: center;
+}
+
+:-ms-input-placeholder {
+   text-align: center;
 }

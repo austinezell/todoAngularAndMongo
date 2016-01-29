@@ -11,22 +11,26 @@ app.config(function($urlRouterProvider, $stateProvider){
 
 app.controller('main', function($scope, $http){
 
-  $scope.task = '';
+  $scope.task = {}
 
-  $scope.todayDate = new Date();
+  let d = new Date();
+  let y = d.getFullYear();
+  let m = d.getMonth() < 10 ? `0${d.getMonth()+1}` : d.getMonth() +1;
+  let day = d.getDate();
+  $scope.today = `${y}-${m}-${day}`;
 
-  $scope.populate = function(){
+  function populate(){
     $http.get('/todo')
     .then(function(data){
       $scope.todos = data.data
     })
   }
 
-  $scope.addTask = function(description){
-    $http.post('/addtodo/', {description: description})
+  $scope.addTask = function(task){
+    $http.post('/addtodo/', task)
     .then(function(data){
-      $scope.populate()
-      $scope.task= ''
+      populate();
+      $scope.task={};
     })
   }
 
@@ -35,16 +39,16 @@ app.controller('main', function($scope, $http){
   $scope.remove = function(id) {
     $http.delete('/remove/'+id)
     .then(function(data){
-      $scope.populate()
+      populate();
     })
   }
 
   $scope.toggleComplete = function(id, newState){
     $http.put('/update/'+id, {completed: newState})
     .then(function(data){
-      $scope.populate()
+      populate();
     })
   }
 
-  $scope.populate()
+  populate();
 })

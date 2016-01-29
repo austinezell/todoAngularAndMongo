@@ -1,5 +1,7 @@
-<div class="row ">
-  <div class="columns small-9">
+<div class="row">
+  <h1 align='center'>To Do App</h1>
+  <hr>
+  <div class="columns small-offset-1 small-7">
     <table>
       <thead>
         <tr>
@@ -22,16 +24,17 @@
     </table>
   </div>
 
-  <div id="add-form" class="columns small-3">
+  <div align='center' id="add-form" class="columns small-3">
 
     <form ng-submit="addTask(task)">
-      Title<br>
+      <span class="label">Title</span><br>
       <input type="text" placeholder="Title" ng-model="task.title" required/>
-      Description<br>
-      <textarea ng-model="task.description" name="name" rows="5"></textarea>
-      Deadline<br>
-      <input ng-model="task.deadline" type="date" ng-min="{{todayDate}}">
-      <button type="submit" class='btn btn-xs btn-info'>Add Task</button>
+      <span class="label">Description</span><br>
+      <textarea placeholder="Description" ng-model="task.description" name="name" rows="5"></textarea>
+      <span class="label">Deadline</span><br>
+      <input class="date" ng-model="task.deadline" type="date" min="{{today}}">
+      <button type="submit" class='button small'>Add Task</button>
     </form>
   </div>
+  <div class="small-1 columns"></div>
 </div>
