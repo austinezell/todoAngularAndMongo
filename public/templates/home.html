@@ -26,12 +26,27 @@
                 <ul class="veritcal menu nested">
                   <li><a href="#">Dates</a>
                     <ul class="veritcal menu nested">
-                      <li><a href="#">Date Posted: {{todo.datePosted.toDateString()}}</a></li>
-                      <li><a href="#">Deadline: {{todo.deadline.toDateString() || "No Deadline"}}</a></li>
-                      <li><a ng-if="todo.isCompleted" href="#">Completed On: {{todo.dateCompleted.toDateString()}}</a></li>
+                      <li class="vertical-label">Date Posted:</li>
+                      <li><a href="#">{{todo.datePosted.toDateString()}}</a></li>
+                      <li class="vertical-label">Deadline:</li>
+                      <li><a href="#">{{todo.deadline.toDateString() || "No Deadline"}}</a></li>
+                      <li ng-if="todo.isCompleted" class="vertical-label">Was Completed On:</li>
+                      <li ng-if="todo.isCompleted"><a href="#">{{todo.dateCompleted.toDateString()}}</a></li>
                     </ul>
                   </li>
-                  <li><a href="#">Item 1B</a></li>
+                </ul>
+                <ul class="veritcal menu nested">
+                  <li><a href="#">Edit</a>
+                    <ul class="veritcal menu nested">
+                      <li><a href>Completed? &nbsp;<input class="checkbox" ng-click="toggleComplete(todo._id)" type="checkbox"></a>
+                        <div class="roundedTwo">
+                          <input type="checkbox" value="None" id="roundedTwo" name="check" />
+                          <label for="roundedTwo"></label>
+                        </div>
+                      </li>
+                      <li><a href="#" ng-click="delete(todo._id)">Delete</a></li>
+                    </ul>
+                  </li>
                 </ul>
               </li>
             </ul>
@@ -57,4 +72,10 @@
       <button type="submit" class='button small'>Add Task</button>
     </form>
   </div>
+</div>
+
+
+<div class="roundedTwo">
+	<input type="checkbox" value="None" id="roundedTwo" name="check" />
+	<label for="roundedTwo"></label>
 </div>

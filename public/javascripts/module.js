@@ -38,8 +38,8 @@ app.controller('mainCtrl', function($scope, $http) {
       .then(function(response) {
         let todos = response.data.map((todo)=>{
           todo.datePosted = new Date(todo.datePosted);
-          todo.deadline = new Date(todo.deadline);
-          todo.dateCompleted = new Date(todo.dateCompleted);
+          if(todo.deadline) todo.deadline = new Date(todo.deadline);
+          if(todo.dateCompleted) todo.dateCompleted = new Date(todo.dateCompleted);
           return todo;
         })
         $scope.todos = todos;
@@ -79,8 +79,6 @@ app.controller('mainCtrl', function($scope, $http) {
 
 app.directive("foundationRepeat", function() {
   return function(scope, element, attrs) {
-    if (scope.$last) {
-      $("#all ul:not('.activated')").addClass('activated').foundation()
-    }
+    $(element).foundation()
   }
 })
