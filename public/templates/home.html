@@ -38,13 +38,10 @@
                 <ul class="veritcal menu nested">
                   <li><a href="#">Edit</a>
                     <ul class="veritcal menu nested">
-                      <li><a href>Completed? &nbsp;<input class="checkbox" ng-click="toggleComplete(todo._id)" type="checkbox"></a>
-                        <div class="roundedTwo">
-                          <input type="checkbox" value="None" id="roundedTwo" name="check" />
-                          <label for="roundedTwo"></label>
-                        </div>
+                      <li> <span class="first" ng-class="{'done': todo.isCompleted}">Complete</span><span ng-class="{'hidden':todo.isCompleted}">d?</span> &nbsp; <input class="checkbox" ng-checked="todo.isCompleted" ng-click="toggleComplete(todo._id, !todo.isCompleted)" type="checkbox">
                       </li>
-                      <li><a href="#" ng-click="delete(todo._id)">Delete</a></li>
+                      <li><a href ng-click="remove(todo._id)">Delete</a></li>
+                      <li><a href>Change Deadline</a></li>
                     </ul>
                   </li>
                 </ul>
@@ -72,10 +69,4 @@
       <button type="submit" class='button small'>Add Task</button>
     </form>
   </div>
-</div>
-
-
-<div class="roundedTwo">
-	<input type="checkbox" value="None" id="roundedTwo" name="check" />
-	<label for="roundedTwo"></label>
 </div>

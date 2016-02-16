@@ -4,11 +4,11 @@ var app = angular.module('sample', ['ui.router']);
 
 app.config(function($urlRouterProvider, $stateProvider) {
   $stateProvider
-    .state('home', {
-      url: '/',
-      templateUrl: '/templates/home.html',
-      controller: "mainCtrl"
-    })
+  .state('home', {
+    url: '/',
+    templateUrl: '/templates/home.html',
+    controller: "mainCtrl"
+  })
   $urlRouterProvider.otherwise('/')
 })
 
@@ -35,43 +35,56 @@ app.controller('mainCtrl', function($scope, $http) {
 
   function populate() {
     $http.get('/todo')
-      .then(function(response) {
-        let todos = response.data.map((todo)=>{
-          todo.datePosted = new Date(todo.datePosted);
-          if(todo.deadline) todo.deadline = new Date(todo.deadline);
-          if(todo.dateCompleted) todo.dateCompleted = new Date(todo.dateCompleted);
-          return todo;
-        })
-        $scope.todos = todos;
-        filter(todos);
+    .then(function(response) {
+      let todos = response.data.map((todo)=>{
+        todo.datePosted = new Date(todo.datePosted);
+        if(todo.deadline) todo.deadline = new Date(todo.deadline);
+        if(todo.dateCompleted) todo.dateCompleted = new Date(todo.dateCompleted);
+        return todo;
       })
+      $scope.todos = todos;
+      filter(todos);
+    })
   }
 
   $scope.addTask = function(task) {
     $http.post('/addtodo/', task)
-      .then(function(response) {
-        populate();
-        $scope.task = {};
-      })
+    .then(function(response) {
+      populate();
+      $scope.task = {};
+    })
   }
 
 
 
   $scope.remove = function(id) {
-    $http.delete('/remove/' + id)
+    swal({
+      title: "Are you sure?",
+      text: "",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "red",
+      confirmButtonText: "Yes, delete it!",
+      closeOnConfirm: false
+    }, function() {
+      $http.delete('/remove/' + id)
       .then(function(response) {
         populate();
+        swal("Deleted!", "Todo removed", "success");
+      }, function(response){
+        console.log(response);
       })
+    });
   }
 
   $scope.toggleComplete = function(id, newState) {
     console.log('id', id, 'newState', newState);
     $http.put('/update/' + id, {
-        isCompleted: newState
-      })
-      .then(function(data) {
-        populate();
-      })
+      isCompleted: newState
+    })
+    .then(function(data) {
+      populate();
+    })
   }
 
   populate();

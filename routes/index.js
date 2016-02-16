@@ -33,6 +33,9 @@ router.delete('/remove/:id', function(req, res){
 
 router.put('/update/:id', function(req, res){
   console.log(req.body);
+  if (req.body.isCompleted === true) {
+    req.body.dateCompleted = new Date();
+  }
   ToDo.findByIdAndUpdate(req.params.id, req.body, function(err, todo){
     console.log(todo);
     if (err || !todo){
