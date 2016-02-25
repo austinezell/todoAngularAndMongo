@@ -18,9 +18,8 @@ app.config(function($urlRouterProvider, $stateProvider) {
   .state("tasks.todo", {
     url: "/todo",
     controller: function($scope, $state) {
-      console.log('loaded');
       $scope.location.name = $state.current.name.replace('tasks.', '');
-      console.log("hey",$scope.location.name);
+      $scope.populate();
     }
   })
   .state("tasks.done", {
@@ -33,6 +32,7 @@ app.config(function($urlRouterProvider, $stateProvider) {
     url: "/all",
     controller:  function($scope, $state){
       $scope.location.name = $state.current.name.replace('tasks.', '');
+      $scope.populate();
       $scope.$apply;
     }
   })

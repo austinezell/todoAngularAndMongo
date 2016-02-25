@@ -1,7 +1,6 @@
 "use strict";
 
 app.controller('mainCtrl', function($scope, $http) {
-  console.log('yo');
   angular.element(document).ready(function() {
     $(document).foundation();
   })
@@ -15,15 +14,8 @@ app.controller('mainCtrl', function($scope, $http) {
   let day = d.getDate();
   $scope.today = `${y}-${m}-${day}`;
 
-  function filter(todos) {
-    // $scope.displayTodos = todos.filter((todo)=>{
-    //   return !todo.isCompleted;
-    // });
-    // $scope.$apply
-  }
-
-  function populate() {
-    $http.get('/todo')
+  $scope.populate = function() {
+    $http.get(`/todos/${$scope.location.name}`)
     .then(function(response) {
       let todos = response.data.map((todo)=>{
         todo.datePosted = new Date(todo.datePosted);
@@ -32,7 +24,6 @@ app.controller('mainCtrl', function($scope, $http) {
         return todo;
       })
       $scope.todos = todos;
-      // filter(todos);
     })
   }
 
@@ -42,9 +33,6 @@ app.controller('mainCtrl', function($scope, $http) {
       populate();
       $scope.task = {};
     })
-  }
-  $scope.applyFilter = (type) =>{
-
   }
   $scope.remove = function(id) {
     swal({
@@ -60,20 +48,20 @@ app.controller('mainCtrl', function($scope, $http) {
       .then(function(response) {
         populate();
         swal("Deleted!", "Todo removed", "success");
-      }, function(response){
-        console.log(response);
+      }, function(error){
+        console.log(error);
       })
     });
   }
 
   $scope.toggleComplete = function(id, newState) {
-    $http.put('/update/' + id, {
-      isCompleted: newState
+    $http.put('todos/update/' + id, {
+      isCompleted: newState,
+      isCompletedUpdate: true
     })
     .then(function(data) {
-      populate();
+      $scope.populate()
     })
   }
 
-  populate();
 })

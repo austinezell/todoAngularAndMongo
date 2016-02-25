@@ -1,7 +1,7 @@
 body {
   background-color: ghostwhite;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  min-height: 105vh;
+  min-height: 101vh;
 }
 
 .tabs>.tabs-title{
@@ -37,7 +37,7 @@ button.button {
   border-bottom-color: black;
   transition: all 0s;
   border-radius: 3px;
-  margin: 1rem 0;
+  margin: .5rem 0;
 }
 
 button.button:hover{
@@ -74,14 +74,34 @@ ul.vertical.menu.top-layer {
 
 input, textarea {
   text-align: center;
-  margin: 0;
+  margin: 0 !important;
 }
 
 .row {
   background-color: white;
-  height: 100%;
   text-align: center;
   margin: 0 auto;
+  padding: 0;
+  padding-bottom: 1rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h4 {
+  margin-bottom: 0;
+}
+
+hr {
+  border-top: 0;
+  clear: both;
+  margin: auto;
+}
+
+.columns {
+  padding: 0;
+  margin-top: 1rem;
 }
 
 .row .row {
@@ -118,5 +138,25 @@ span {
 }
 
 a.active{
-  background-color: grey;
+  background-color: lightgrey;
+}
+
+.menu>li a:active {
+  background-color: lightgrey;
+}
+
+li.collapsed {
+  transition: height 1s;
+  height: 0;
+  overflow: hidden;
+}
+
+
+
+li.collapsed.revealed.vertical-label {
+  height: 22px;
+}
+
+li.collapsed.revealed {
+  height: 36px;
 }
