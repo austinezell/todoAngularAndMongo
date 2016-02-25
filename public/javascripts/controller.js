@@ -28,9 +28,9 @@ app.controller('mainCtrl', function($scope, $http) {
   }
 
   $scope.addTask = function(task) {
-    $http.post('/addtodo/', task)
+    $http.post('todos/add/', task)
     .then(function(response) {
-      populate();
+      $scope.populate()
       $scope.task = {};
     })
   }
@@ -44,7 +44,7 @@ app.controller('mainCtrl', function($scope, $http) {
       confirmButtonText: "Yes, delete it!",
       closeOnConfirm: false
     }, function() {
-      $http.delete('/remove/' + id)
+      $http.delete('todos/remove/' + id)
       .then(function(response) {
         populate();
         swal("Deleted!", "Todo removed", "success");

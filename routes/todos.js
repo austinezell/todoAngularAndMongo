@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const Todo = require("../models/ToDoSchema.js")
+const ToDo = require("../models/ToDoSchema.js")
 
 router.get('/all', function(req, res){
   ToDo.find({}, function(err, todos){
@@ -8,19 +8,19 @@ router.get('/all', function(req, res){
 })
 
 router.get('/done', function(req, res){
-  Todo.find({isCompleted: true}, function(err, todos){
+  ToDo.find({isCompleted: true}, function(err, todos){
     err ? res.status(499).send(err) : res.send(todos);
   })
 })
 
 router.get('/todo', function(req, res){
-  Todo.find({isCompleted: false}, function(err, todos){
+  ToDo.find({isCompleted: false}, function(err, todos){
     err ? res.status(499).send(err) : res.send(todos);
   })
 })
 
 router.post('/add', function(req, res){
-  ToDo.create(req.body, function(err, newTodo){
+  ToDo.create(req.body, function(err, newToDo){
     if(!err){
       res.end()
     }
@@ -33,21 +33,27 @@ router.delete('/remove/:id', function(req, res){
       res.status(400).send("error")
     }
     else{
-      res.send("todo id" +req.params.id+ "deleted")
+      res.send("todo id " +req.params.id+ " deleted")
     }
   })
 })
 
 router.put('/update/:id', function(req, res){
+
   if (req.body.isCompletedUpdate){
     if (req.body.isCompleted === true) {
       req.body.dateCompleted = new Date();
     }
-    else req.body.dateCompleted = null;
+    else {
+      req.body.dateCompleted = null;
+    }
+    delete req.body.isCompletedUpdate;
   }
+
   ToDo.findByIdAndUpdate(req.params.id, req.body, function(err, todo){
+    console.log('hi');
     if (err || !todo){
-      res.status(400).send(err);
+      res.status(499).send(err);
     }else {
       res.send(todo)
     }

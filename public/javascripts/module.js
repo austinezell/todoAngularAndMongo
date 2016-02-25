@@ -20,12 +20,15 @@ app.config(function($urlRouterProvider, $stateProvider) {
     controller: function($scope, $state) {
       $scope.location.name = $state.current.name.replace('tasks.', '');
       $scope.populate();
+      $scope.$apply;
     }
   })
   .state("tasks.done", {
     url: "/done",
     controller: function($scope, $state) {
       $scope.location.name = $state.current.name.replace('tasks.', '');
+      $scope.populate();
+      $scope.$apply;
     }
   })
   .state("tasks.all", {

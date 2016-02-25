@@ -32,18 +32,19 @@
         <div class="columns small-8">
           <div class="tabs-content vertical">
             <div class="tabs-panel is-active" id="tasks">
+              <h4 ng-if="todos.length<1">No tasks here!</h4>
               <ul ng-repeat="todo in todos track by $index" class="vertical menu top-layer" foundation-repeat data-accordion-menu>
                 <li>
                   <a href="#">{{todo.title}}</a>
                   <ul class="veritcal menu nested">
-                    <li><a href="#">Dates</a>
+                    <li><a href>Dates</a>
                       <ul class="veritcal menu nested">
                         <li class="vertical-label"><span>Date Posted:</span></li>
-                        <li><a href="#">{{todo.datePosted.toDateString()}}</a></li>
+                        <li><a >{{todo.datePosted.toDateString()}}</a></li>
                         <li class="vertical-label"><span>Deadline:</span></li>
-                        <li><a href="#">{{todo.deadline.toDateString() || "No Deadline"}}</a></li>
+                        <li><a >{{todo.deadline.toDateString() || "No Deadline"}}</a></li>
                         <li ng-class="{'revealed':todo.isCompleted}" class="collapsed vertical-label"><span>Was Completed On:</span></li>
-                        <li ng-class="{'revealed':todo.isCompleted}" class="collapsed"><a href="#">{{todo.dateCompleted.toDateString()}}</a></li>
+                        <li ng-class="{'revealed':todo.isCompleted}" class="collapsed"><a>{{todo.dateCompleted.toDateString()}}</a></li>
                       </ul>
                     </li>
                   </ul>
