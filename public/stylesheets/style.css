@@ -90,3 +90,7 @@ span {
 .menu>li>span.first{
   padding-left: 16px;
 }
+
+a.active{
+  background-color: grey;
+}
