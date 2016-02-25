@@ -1,6 +1,7 @@
 "use strict";
 
 app.controller('mainCtrl', function($scope, $http) {
+  console.log('yo');
   angular.element(document).ready(function() {
     $(document).foundation();
   })
@@ -15,10 +16,10 @@ app.controller('mainCtrl', function($scope, $http) {
   $scope.today = `${y}-${m}-${day}`;
 
   function filter(todos) {
-    $scope.displayTodos = todos.filter((todo)=>{
-      return !todo.isCompleted;
-    });
-    $scope.$apply
+    // $scope.displayTodos = todos.filter((todo)=>{
+    //   return !todo.isCompleted;
+    // });
+    // $scope.$apply
   }
 
   function populate() {
@@ -31,7 +32,7 @@ app.controller('mainCtrl', function($scope, $http) {
         return todo;
       })
       $scope.todos = todos;
-      filter(todos);
+      // filter(todos);
     })
   }
 

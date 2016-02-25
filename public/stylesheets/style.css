@@ -9,8 +9,19 @@ body {
 }
 
 .vertical-label {
-  background-color: lightgrey;
   width: 200px;
+}
+
+.vertical-label span {
+  background-color: lightgrey;
+}
+
+.menu.nested {
+  margin-left: .5rem;
+}
+
+.menu>li>a{
+  padding: .7rem .5rem;
 }
 
 .checkbox {
@@ -26,6 +37,7 @@ button.button {
   border-bottom-color: black;
   transition: all 0s;
   border-radius: 3px;
+  margin: 1rem 0;
 }
 
 button.button:hover{
@@ -41,30 +53,44 @@ ul.vertical.menu li {
 }
 
 ul.vertical.menu.top-layer {
-  margin-bottom: 40px;
-  border: 1px solid black;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  border: 1px solid blue;}
+
+.tabs-title>a{
+  padding: 1.25rem 0;
 }
 
 .label {
   width: 100%;
   font-size: 24px;
   color: black;
-  background-color: whitesmoke;
+  background-color: powderblue;
+  margin-top: 1rem;
+  border: 1px solid lightcyan;
+  border-radius: 5px;
+  font-size: 1.1rem;
 }
 
 input, textarea {
   text-align: center;
+  margin: 0;
 }
 
 .row {
   background-color: white;
   height: 100%;
   text-align: center;
+  margin: 0 auto;
 }
 
-.columns{
+.row .row {
+  margin: 0 auto;
 }
 
+.tabs-content.vertical {
+  border: 1px solid #e6e6e6;
+}
 #add-form {
   border: 1px solid grey;
   background-color: ghostwhite;

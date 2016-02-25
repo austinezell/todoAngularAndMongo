@@ -26,18 +26,15 @@ app.config(function($urlRouterProvider, $stateProvider) {
   .state("tasks.done", {
     url: "/done",
     controller: function($scope, $state) {
-      console.log('loaded');
       $scope.location.name = $state.current.name.replace('tasks.', '');
-      console.log("hey",$scope.location.name);
     }
-
   })
   .state("tasks.all", {
     url: "/all",
-    controller: function($scope, $state) {
-      console.log('loaded');
+    controller:  function($scope, $state){
       $scope.location.name = $state.current.name.replace('tasks.', '');
-      console.log("hey",$scope.location.name);    }
+      $scope.$apply;
+    }
   })
   $urlRouterProvider.otherwise('/tasks/todo')
 })
