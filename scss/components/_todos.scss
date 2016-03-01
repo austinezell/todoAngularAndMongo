@@ -177,3 +177,14 @@ a.inactive{
 [ui-view].taskList.ng-leave-active {
   transform: translateX(100%);
 }
+
+.description {
+  text-align: center;
+  margin-left: .5rem;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+}
+
+a:active, a:focus {
+  outline-color: transparent !important;
+}

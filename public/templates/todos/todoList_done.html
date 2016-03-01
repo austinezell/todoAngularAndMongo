@@ -1,6 +1,6 @@
 <ul ng-repeat="todo in todos.done track by $index" ng-class="{completed: todo.isCompleted}" class="vertical menu top-layer" foundation-repeat data-accordion-menu>
   <li>
-    <a href="#">{{todo.title}}</a>
+    <a href>{{todo.title}}</a>
     <ul class="veritcal menu nested">
       <li><a href>Dates</a>
         <ul class="veritcal menu nested">
@@ -14,7 +14,7 @@
       </li>
     </ul>
     <ul class="veritcal menu nested">
-      <li><a href="#">Edit</a>
+      <li><a href>Edit</a>
         <ul class="veritcal menu nested">
           <li>
             <a href ng-click="toggleComplete(todo)">
