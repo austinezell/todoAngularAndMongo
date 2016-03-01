@@ -2,8 +2,8 @@
 Date.prototype.toInputString = function(){
   let y = this.getFullYear();
   let m = this.getMonth() < 10 ? `0${this.getMonth()+1}` : this.getMonth() + 1;
-  let day = this.getDate();
-  return `${y}-${m}-${day}`
+  let d = this.getDate() < 10 ? `0${this.getDate()}` : this.getDate();
+  return `${y}-${m}-${d}`
 }
 
 let app = angular.module('todo', ['ui.router', 'ngAnimate']);
