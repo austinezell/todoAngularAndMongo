@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 
 app.service("Todo", function($http){
   this.update = (id, update) =>{

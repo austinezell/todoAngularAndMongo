@@ -6,7 +6,7 @@ Date.prototype.toInputString = function(){
   return `${y}-${m}-${day}`
 }
 
-window.app = angular.module('sample', ['ui.router', 'ngAnimate']);
+let app = angular.module('todo', ['ui.router', 'ngAnimate']);
 
 app.config(function($urlRouterProvider, $stateProvider) {
   $stateProvider
