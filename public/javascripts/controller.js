@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller('mainCtrl', function($scope, $http) {
+app.controller('mainCtrl', function($scope, Todo) {
   angular.element(document).ready(function() {
     $(document).foundation();
   })
@@ -15,7 +15,7 @@ app.controller('mainCtrl', function($scope, $http) {
   $scope.today = `${y}-${m}-${day}`;
 
   $scope.populate = function() {
-    $http.get(`/todos/${$scope.location.name}`)
+    Todo.getAll($scope.location.name)
     .then(function(response) {
       let todos = response.data.map((todo)=>{
         todo.datePosted = new Date(todo.datePosted);
@@ -28,9 +28,9 @@ app.controller('mainCtrl', function($scope, $http) {
   }
 
   $scope.addTask = function(task) {
-    $http.post('todos/add/', task)
+    Todo.addTask
     .then(function(response) {
-      $scope.populate()
+      $scope.populate();
       $scope.task = {};
     })
   }
@@ -44,9 +44,9 @@ app.controller('mainCtrl', function($scope, $http) {
       confirmButtonText: "Yes, delete it!",
       closeOnConfirm: false
     }, function() {
-      $http.delete('todos/remove/' + id)
+      Todo.remove(id)
       .then(function(response) {
-        populate();
+        $scope.populate();
         swal("Deleted!", "Todo removed", "success");
       }, function(error){
         console.log(error);
@@ -56,17 +56,17 @@ app.controller('mainCtrl', function($scope, $http) {
 
   $scope.toggleComplete = function(todo) {
     todo.isCompleted = !todo.isCompleted;
-    $http.put(`todos/update/${todo._id}`, {
+    Todo.update(todo._id, {
       isCompleted: todo.isCompleted,
       isCompletedUpdate: true
-    })
-    .then(function(data) {
     })
   }
 
   $scope.changeDeadline = (todo)=>{
     todo.deadline = todo.newDeadline;
-
+    Todo.update(todo._id, {
+      deadline: todo.deadline
+    })
   }
 
 })
