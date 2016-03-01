@@ -211,7 +211,7 @@ a.inactive{
   &::after{
     content: "";
   }
-  &::hover{
+  &:hover{
     cursor: auto;
   }
 }
