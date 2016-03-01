@@ -56,3 +56,20 @@ app.directive("foundationRepeat", function() {
     $(element).foundation()
   }
 })
+app.directive("descriptionEnter", function() {
+  return function(scope, element, attrs) {
+    element.bind("keypress keydown", function(evt){
+      evt.stopPropagation();
+      if(evt.which === 13){
+        evt.preventDefault();
+        evt.target.blur();
+      }
+    })
+    element.bind("blur", function(evt){
+      scope.editDescription(attrs.id, element.text());
+      if(!element.text()){
+        element.text("No Description")
+      }
+    })
+  }
+})

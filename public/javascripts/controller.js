@@ -13,13 +13,13 @@ app.controller('mainCtrl', function($scope, Todo) {
   $scope.populate = function() {
     Todo.getAll($scope.location.name)
     .then(function(response) {
-      let todos = response.data.map((todo)=>{
+      $scope.todos[$scope.location.name] = response.data.map((todo)=>{
         todo.datePosted = new Date(todo.datePosted);
+        todo.editable = false;
         if(todo.deadline) todo.deadline = new Date(todo.deadline);
         if(todo.dateCompleted) todo.dateCompleted = new Date(todo.dateCompleted);
         return todo;
       })
-      $scope.todos[$scope.location.name] = todos;
     })
   }
 
@@ -59,7 +59,11 @@ app.controller('mainCtrl', function($scope, Todo) {
     })
   }
 
-  $scope.changeDeadline = (todo)=>{
+  $scope.editDescription = (id, description)=>{
+    Todo.update(id, {description})
+  }
+
+  $scope.changeDeadline = (todo) =>{
     todo.deadline = todo.newDeadline;
     Todo.update(todo._id, {
       deadline: todo.deadline

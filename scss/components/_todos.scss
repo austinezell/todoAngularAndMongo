@@ -180,12 +180,42 @@ a.inactive{
 
 .description {
   text-align: center;
-  margin-left: .5rem;
+  margin: 0 .5rem;
   border-top: 1px solid grey;
   border-bottom: 1px solid grey;
   color: grey;
+  position: relative;
 }
 
-a:active, a:focus {
+.description:hover{
+  cursor: pointer;
+  &::after{
+    content: "Click To Edit ";
+    font-size: .7rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    color: #2199e8;
+    right: 5px;
+    top: calc(13px - .7rem);
+    position: absolute;
+    right: 0;
+    &:hover{
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+}
+
+.description:focus{
+  color: black;
+  &::after{
+    content: "";
+  }
+  &::hover{
+    cursor: auto;
+  }
+}
+
+a:active, a:focus{
   outline-color: transparent !important;
 }

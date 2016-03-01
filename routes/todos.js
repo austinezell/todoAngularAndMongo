@@ -21,9 +21,7 @@ router.get('/todos', function(req, res){
 
 router.post('/add', function(req, res){
   ToDo.create(req.body, function(err, newToDo){
-    if(!err){
-      res.end()
-    }
+    res.end()
   })
 })
 
@@ -51,7 +49,6 @@ router.put('/update/:id', function(req, res){
   }
 
   ToDo.findByIdAndUpdate(req.params.id, req.body, function(err, todo){
-    console.log('hi');
     if (err || !todo){
       res.status(499).send(err);
     }else {

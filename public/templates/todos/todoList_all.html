@@ -2,7 +2,7 @@
   <li>
     <a href>{{todo.title}}</a>
     <ul class="veritcal menu nested">
-      <div class="description">{{todo.description}}</div>
+      <div class="description" data-id="{{todo._id}}" contenteditable="true" description-enter>{{todo.description || "No Description"}}</div>
       <li><a href>Dates</a>
         <ul class="veritcal menu nested">
           <li class="vertical-label"><span>Date Posted:</span></li>
