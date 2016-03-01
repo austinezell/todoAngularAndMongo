@@ -52,12 +52,12 @@
                     <li><a href="#">Edit</a>
                       <ul class="veritcal menu nested">
                         <li>
-                          <a href ng-click="toggleComplete(todo._id, !todo.isCompleted)">
+                          <a href ng-click="toggleComplete(todo)">
                             <span class="first" ng-class="{'done': todo.isCompleted}">Complete</span><span ng-class="{'hidden':todo.isCompleted}">d?</span>
                           </a>
                         </li>
                         <li><a href ng-click="remove(todo._id)">Delete</a></li>
-                        <li><a href>Change Deadline</a></li>
+                        <li class="newDeadlineList"><a class="newDeadlineList">Change Deadline</a><input ng-change="changeDeadline(todo)" min="today" ng-model="todo.newDeadline" type="date" class="newDeadline"></li>
                       </ul>
                     </li>
                   </ul>

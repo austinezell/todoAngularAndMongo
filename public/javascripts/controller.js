@@ -54,14 +54,19 @@ app.controller('mainCtrl', function($scope, $http) {
     });
   }
 
-  $scope.toggleComplete = function(id, newState) {
-    $http.put('todos/update/' + id, {
-      isCompleted: newState,
+  $scope.toggleComplete = function(todo) {
+    todo.isCompleted = !todo.isCompleted;
+    $http.put(`todos/update/${todo._id}`, {
+      isCompleted: todo.isCompleted,
       isCompletedUpdate: true
     })
     .then(function(data) {
-      $scope.populate()
     })
+  }
+
+  $scope.changeDeadline = (todo)=>{
+    todo.deadline = todo.newDeadline;
+
   }
 
 })
