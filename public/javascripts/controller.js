@@ -5,7 +5,6 @@ app.controller('mainCtrl', function($scope, Todo) {
     $(document).foundation();
   })
   $scope.task = {};
-  $scope.displayTodos =[];
   $scope.location = {};
 
   let d = new Date();
@@ -28,7 +27,7 @@ app.controller('mainCtrl', function($scope, Todo) {
   }
 
   $scope.addTask = function(task) {
-    Todo.addTask
+    Todo.addTask(task)
     .then(function(response) {
       $scope.populate();
       $scope.task = {};
