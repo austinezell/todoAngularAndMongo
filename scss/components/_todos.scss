@@ -117,7 +117,7 @@ li.newDeadlineList{
   position: relative;
 }
 .vertical.menu {
-  transition: all .5s ease-out;
+  transition: all .5s;
   a{
     transition: color .3s;
   }
@@ -135,4 +135,45 @@ li.newDeadlineList{
   li>a::after{
     border-color: black transparent transparent !important;
   }
+}
+
+a.inactive{
+  &:hover{
+    cursor: auto;
+  }
+}
+
+.taskListContainer {
+  position: relative;
+  height: 80vh;
+  overflow: hidden;
+  min-height: 700px;
+}
+
+.taskList {
+
+}
+
+[ui-view].taskList.ng-enter, [ui-view].taskList.ng-leave {
+  position: absolute;
+  left: 0;
+  right: 0;
+  transition: transform 1s;
+}
+
+[ui-view].taskList.ng-enter {
+  transition-delay: .2s;
+  transform: translateX(-100%);
+}
+
+[ui-view].taskList.ng-enter-active {
+  transform: translateX(0%);
+}
+
+[ui-view].taskList.ng-leave {
+  transform: translateX(0%);
+}
+
+[ui-view].taskList.ng-leave-active {
+  transform: translateX(100%);
 }

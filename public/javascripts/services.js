@@ -4,9 +4,7 @@ app.service("Todo", function($http){
   this.update = (id, update) =>{
     $http.put(`todos/update/${id}`, update)
     .then(response=>{
-      console.log(response);
     }, err=>{
-      console.log(err);
     })
   }
 

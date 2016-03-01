@@ -1,7 +1,6 @@
 <div class="row">
   <h1 align='center'>To Do App</h1>
   <hr>
-  <ui-view></ui-view>
   <div class="row">
 
     <div align='center' id="add-form" class="columns medium-3 medium-push-7 medium-offset-1 small-8 small-offset-2">
@@ -24,45 +23,18 @@
       <div class="row">
         <div class="columns small-4">
           <ul class="tabs vertical" id="todos">
-            <li class="tabs-title"><a ng-class="{'active': location.name==='todo'}" ng-click="applyFilter('!')" ui-sref="tasks.todo">To Do</a></li>
-            <li class="tabs-title"><a ng-class="{'active': location.name==='done'}" ng-click="applyFilter('')" ui-sref="tasks.done">Done</a></li>
-            <li class="tabs-title"><a ng-class="{'active': location.name==='all'}" ng-click="applyFilter(null)" ui-sref="tasks.all">All</a></li>
+            <li class="tabs-title"><a ng-class="{'active': location.name==='todo'}" ui-sref="tasks.todos">To Do</a></li>
+            <li class="tabs-title"><a ng-class="{'active': location.name==='done'}" ui-sref="tasks.done">Done</a></li>
+            <li class="tabs-title"><a ng-class="{'active': location.name==='all'}"  ui-sref="tasks.all">All</a></li>
           </ul>
         </div>
         <div class="columns small-8">
           <div class="tabs-content vertical">
             <div class="tabs-panel is-active" id="tasks">
               <h4 ng-if="todos.length<1">No tasks here!</h4>
-              <ul ng-repeat="todo in todos track by $index" ng-class="{completed: todo.isCompleted}" class="vertical menu top-layer" foundation-repeat data-accordion-menu>
-                <li>
-                  <a href="#">{{todo.title}}</a>
-                  <ul class="veritcal menu nested">
-                    <li><a href>Dates</a>
-                      <ul class="veritcal menu nested">
-                        <li class="vertical-label"><span>Date Posted:</span></li>
-                        <li><a >{{todo.datePosted.toDateString()}}</a></li>
-                        <li class="vertical-label"><span>Deadline:</span></li>
-                        <li><a >{{todo.deadline.toDateString() || "No Deadline"}}</a></li>
-                        <li ng-class="{'revealed':todo.isCompleted}" class="collapsed vertical-label"><span>Was Completed On:</span></li>
-                        <li ng-class="{'revealed':todo.isCompleted}" class="collapsed"><a>{{todo.dateCompleted.toDateString()}}</a></li>
-                      </ul>
-                    </li>
-                  </ul>
-                  <ul class="veritcal menu nested">
-                    <li><a href="#">Edit</a>
-                      <ul class="veritcal menu nested">
-                        <li>
-                          <a href ng-click="toggleComplete(todo)">
-                            <span class="first" ng-class="{'done': todo.isCompleted}">Complete</span><span ng-class="{'hidden':todo.isCompleted}">d?</span>
-                          </a>
-                        </li>
-                        <li><a href ng-click="remove(todo._id)">Delete</a></li>
-                        <li class="newDeadlineList"><a class="newDeadlineList">Change Deadline</a><input ng-change="changeDeadline(todo)" value="todo.deadline" ng-model="todo.newDeadline" min="{{today}}" type="date" class="newDeadline"></li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
+              <div class="taskListContainer">
+                <div ui-view class="taskList"></div ui-view>
+              </div>
             </div>
           </div>
         </div>

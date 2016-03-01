@@ -45,7 +45,11 @@ hr {
 }
 
 span {
-  transition: all 1s ease;
+  transition: all 1s;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
 }
 
 @import "./components/_todos",

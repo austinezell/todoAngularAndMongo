@@ -6,10 +6,9 @@ app.controller('mainCtrl', function($scope, Todo) {
   })
   $scope.task = {};
   $scope.location = {};
+  $scope.todos= {};
 
   $scope.today = new Date().toInputString();
-
-  console.log($scope.today);
 
   $scope.populate = function() {
     Todo.getAll($scope.location.name)
@@ -20,7 +19,7 @@ app.controller('mainCtrl', function($scope, Todo) {
         if(todo.dateCompleted) todo.dateCompleted = new Date(todo.dateCompleted);
         return todo;
       })
-      $scope.todos = todos;
+      $scope.todos[$scope.location.name] = todos;
     })
   }
 

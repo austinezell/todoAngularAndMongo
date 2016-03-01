@@ -6,7 +6,7 @@ Date.prototype.toInputString = function(){
   return `${y}-${m}-${day}`
 }
 
-window.app = angular.module('sample', ['ui.router']);
+window.app = angular.module('sample', ['ui.router', 'ngAnimate']);
 
 app.config(function($urlRouterProvider, $stateProvider) {
   $stateProvider
@@ -21,16 +21,18 @@ app.config(function($urlRouterProvider, $stateProvider) {
     abstract: true,
     controller: "mainCtrl"
   })
-  .state("tasks.todo", {
+  .state("tasks.todos", {
     url: "/todo",
+    templateUrl: "/templates/todos/todoList_todo.html",
     controller: function($scope, $state) {
       $scope.location.name = $state.current.name.replace('tasks.', '');
-      $scope.populate();
+      $scope.populate($state.current.name.replace('tasks.', ''));
       $scope.$apply;
     }
   })
   .state("tasks.done", {
     url: "/done",
+    templateUrl: "/templates/todos/todoList_done.html",
     controller: function($scope, $state) {
       $scope.location.name = $state.current.name.replace('tasks.', '');
       $scope.populate();
@@ -39,7 +41,8 @@ app.config(function($urlRouterProvider, $stateProvider) {
   })
   .state("tasks.all", {
     url: "/all",
-    controller:  function($scope, $state){
+    templateUrl: "/templates/todos/todoList_all.html",
+    controller: function($scope, $state){
       $scope.location.name = $state.current.name.replace('tasks.', '');
       $scope.populate();
       $scope.$apply;

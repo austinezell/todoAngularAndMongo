@@ -1,0 +1,30 @@
+<ul ng-repeat="todo in todos.todos track by $index" ng-class="{completed: todo.isCompleted}" class="vertical menu top-layer" foundation-repeat data-accordion-menu>
+  <li>
+    <a href="#">{{todo.title}}</a>
+    <ul class="veritcal menu nested">
+      <li><a href>Dates</a>
+        <ul class="veritcal menu nested">
+          <li class="vertical-label"><span>Date Posted:</span></li>
+          <li><a class="inactive">{{todo.datePosted.toDateString()}}</a></li>
+          <li class="vertical-label"><span>Deadline:</span></li>
+          <li><a class="inactive">{{todo.deadline.toDateString() || "No Deadline"}}</a></li>
+          <li ng-class="{'revealed':todo.isCompleted}" class="collapsed vertical-label"><span>Was Completed On:</span></li>
+          <li ng-class="{'revealed':todo.isCompleted}" class="inactive collapsed"><a>{{todo.dateCompleted.toDateString()}}</a></li>
+        </ul>
+      </li>
+    </ul>
+    <ul class="veritcal menu nested">
+      <li><a href="#">Edit</a>
+        <ul class="veritcal menu nested">
+          <li>
+            <a href ng-click="toggleComplete(todo)">
+              <span class="first" ng-class="{'done': todo.isCompleted}">Complete</span><span ng-class="{'hidden':todo.isCompleted}">d?</span>
+            </a>
+          </li>
+          <li><a href ng-click="remove(todo._id)">Delete</a></li>
+          <li class="newDeadlineList"><a class="newDeadlineList">Change Deadline</a><input ng-change="changeDeadline(todo)" value="{{todo.deadline.toInputString()}}" ng-model="todo.newDeadline" min="{{today}}" type="date" class="newDeadline"></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>

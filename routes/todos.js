@@ -13,7 +13,7 @@ router.get('/done', function(req, res){
   })
 })
 
-router.get('/todo', function(req, res){
+router.get('/todos', function(req, res){
   ToDo.find({isCompleted: false}, function(err, todos){
     err ? res.status(499).send(err) : res.send(todos);
   })
