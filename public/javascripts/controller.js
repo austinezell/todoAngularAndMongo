@@ -7,11 +7,9 @@ app.controller('mainCtrl', function($scope, Todo) {
   $scope.task = {};
   $scope.location = {};
 
-  let d = new Date();
-  let y = d.getFullYear();
-  let m = d.getMonth() < 10 ? `0${d.getMonth()+1}` : d.getMonth() + 1;
-  let day = d.getDate();
-  $scope.today = `${y}-${m}-${day}`;
+  $scope.today = new Date().toInputString();
+
+  console.log($scope.today);
 
   $scope.populate = function() {
     Todo.getAll($scope.location.name)
@@ -55,6 +53,7 @@ app.controller('mainCtrl', function($scope, Todo) {
 
   $scope.toggleComplete = function(todo) {
     todo.isCompleted = !todo.isCompleted;
+    todo.dateCompleted = new Date();
     Todo.update(todo._id, {
       isCompleted: todo.isCompleted,
       isCompletedUpdate: true

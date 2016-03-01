@@ -1,0 +1,138 @@
+.tabs>.tabs-title{
+  border: 1px solid rgb(221, 221, 221);
+}
+
+
+.vertical-label {
+  width: 200px;
+}
+
+.vertical-label span {
+  background-color: lightgrey;
+}
+
+.menu.nested {
+  margin-left: .5rem;
+}
+
+.menu>li>a{
+  padding: .7rem .5rem;
+}
+
+ul.vertical.menu li {
+  display: block !important;
+  text-align: left;
+}
+
+ul.vertical.menu.top-layer {
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  border: 1px solid blue;
+}
+
+.tabs-title>a{
+  padding: 1.25rem 0;
+}
+
+.tabs-content.vertical {
+  border: 1px solid #e6e6e6;
+}
+
+.done {
+  text-decoration: line-through;
+  color: grey;
+}
+
+.menu>li>span.first{
+  padding-left: 16px;
+}
+
+a.active{
+  background-color: lightgrey;
+}
+
+.menu>li>a:active {
+  background-color: lightgrey;
+}
+
+li.collapsed {
+  transition: height 1s;
+  height: 0;
+  overflow: hidden;
+}
+
+
+
+li.collapsed.revealed.vertical-label {
+  height: 22px;
+}
+
+li.collapsed.revealed {
+  height: 36px;
+}
+
+input[type=date].newDeadline {
+  width: 100%;
+  border: none;
+  position: absolute;
+  color: transparent;
+  background-color: transparent;
+  top: 0;
+  border: none !important;
+  outline: none;
+  box-shadow: none !important;
+  &:hover{
+    background-color: transparent;
+  }
+  &::-webkit-datetime-edit-month-field {
+    display: none;
+  }
+  &::-webkit-datetime-edit-day-field {
+    display: none;
+  }
+  &::-webkit-datetime-edit-year-field {
+    display: none;
+  }
+
+  &::-webkit-clear-button {
+    display: none;
+  }
+  &::-webkit-inner-spin-button {
+    display: none;
+  }
+  &::-webkit-calendar-picker-indicator {
+    font-size: 20px;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    color: transparent;
+    &:hover{
+      cursor: pointer;
+      background-color: transparent;
+    }
+  }
+}
+
+li.newDeadlineList{
+  position: relative;
+}
+.vertical.menu {
+  transition: all .5s ease-out;
+  a{
+    transition: color .3s;
+  }
+}
+
+.vertical.menu.completed{
+  background-color: whitesmoke;
+  border: 1px solid black !important;
+  span.hidden{
+    color: whitesmoke;
+  }
+  li>a{
+    color: black;
+  }
+  li>a::after{
+    border-color: black transparent transparent !important;
+  }
+}

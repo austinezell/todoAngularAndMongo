@@ -33,7 +33,7 @@
           <div class="tabs-content vertical">
             <div class="tabs-panel is-active" id="tasks">
               <h4 ng-if="todos.length<1">No tasks here!</h4>
-              <ul ng-repeat="todo in todos track by $index" class="vertical menu top-layer" foundation-repeat data-accordion-menu>
+              <ul ng-repeat="todo in todos track by $index" ng-class="{completed: todo.isCompleted}" class="vertical menu top-layer" foundation-repeat data-accordion-menu>
                 <li>
                   <a href="#">{{todo.title}}</a>
                   <ul class="veritcal menu nested">
@@ -57,7 +57,7 @@
                           </a>
                         </li>
                         <li><a href ng-click="remove(todo._id)">Delete</a></li>
-                        <li class="newDeadlineList"><a class="newDeadlineList">Change Deadline</a><input ng-change="changeDeadline(todo)" min="{{today}}" ng-model="todo.newDeadline" type="date" class="newDeadline"></li>
+                        <li class="newDeadlineList"><a class="newDeadlineList">Change Deadline</a><input ng-change="changeDeadline(todo)" value="todo.deadline" ng-model="todo.newDeadline" min="{{today}}" type="date" class="newDeadline"></li>
                       </ul>
                     </li>
                   </ul>
@@ -65,13 +65,8 @@
               </ul>
             </div>
           </div>
-
         </div>
-
       </div>
-
     </div>
-
   </div>
-
 </div>

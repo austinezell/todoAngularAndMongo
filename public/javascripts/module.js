@@ -1,4 +1,10 @@
 'use strict';
+Date.prototype.toInputString = function(){
+  let y = this.getFullYear();
+  let m = this.getMonth() < 10 ? `0${this.getMonth()+1}` : this.getMonth() + 1;
+  let day = this.getDate();
+  return `${y}-${m}-${day}`
+}
 
 window.app = angular.module('sample', ['ui.router']);
 
