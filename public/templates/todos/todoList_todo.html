@@ -10,7 +10,7 @@
           <li class="vertical-label"><span>Deadline:</span></li>
           <li><a class="inactive">{{todo.deadline.toDateString() || "No Deadline"}}</a></li>
           <li ng-class="{'revealed':todo.isCompleted}" class="collapsed vertical-label"><span>Was Completed On:</span></li>
-          <li ng-class="{'revealed':todo.isCompleted}" class="inactive collapsed"><a>{{todo.dateCompleted.toDateString()}}</a></li>
+          <li ng-class="{'revealed':todo.isCompleted}" class="collapsed"><a class="inactive">{{todo.dateCompleted.toDateString()}}</a></li>
         </ul>
       </li>
     </ul>
