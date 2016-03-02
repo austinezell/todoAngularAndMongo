@@ -184,19 +184,22 @@ a.inactive{
   border-top: 1px solid grey;
   border-bottom: 1px solid grey;
   color: grey;
+  padding-right: 70px;
+  transition: all .2s;
   position: relative;
 }
 
 .description:hover{
   cursor: pointer;
   &::after{
-    content: "Click To Edit ";
+    content: "Click To Edit";
     font-size: .7rem;
-    margin-top: 0;
-    margin-bottom: 0;
     color: #2199e8;
     right: 5px;
-    top: calc(13px - .7rem);
+    top:0;
+    bottom: 0;
+    margin: auto;
+    height: .7rem;
     position: absolute;
     right: 0;
     &:hover{
