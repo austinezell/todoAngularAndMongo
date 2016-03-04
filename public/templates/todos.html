@@ -3,9 +3,11 @@
   <hr>
   <div class="row">
 
-    <div align='center' id="add-form" class="columns medium-3 medium-push-7 medium-offset-1 small-8 small-offset-2">
+    <div align='center' class="columns medium-3 medium-push-7 medium-offset-1 small-8 small-offset-2">
       <h4>Add Task</h4>
       <hr>
+      <div id="add-form" class="columns small-12">
+
       <form ng-submit="addTask(task)">
         <span class="label">Title</span><br>
         <input type="text" placeholder="Title" ng-model="task.title" required/>
@@ -16,6 +18,7 @@
         <button type="submit" class='button small'>Add Task</button>
       </form>
     </div>
+  </div>
 
     <div class="columns small-8 small-offset-2 medium-offset-1 medium-pull-5 medium-7 end">
       <h4>Tasks</h4>
